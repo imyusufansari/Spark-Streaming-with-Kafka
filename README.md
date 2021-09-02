@@ -6,6 +6,7 @@ Getting this streaming data into Apache Spark-Streaming is the first step to per
 # Technologies Used
 1. Kafka 0.9.0.1
 2. Spark 2.0.1
+
 Kafka Python API is used to interact with kafka cluster. PySpark is used to write the spark streaming jobs.
 
 # Execute the Application
