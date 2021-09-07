@@ -1,18 +1,20 @@
 # What are the trending topics in US Meetup Events?
 
+# To Start pyspark shell
 # ./pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2
 
+# # Import Required Libraries
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col, explode, to_json, struct
 from pyspark.sql.types import *
 
-
+# Created spark session
 spark = SparkSession \
     .builder \
     .appName("Meetup") \
     .getOrCreate()
 
-
+# Created kafka consumer using spark readStream
 raw_df = spark \
     .readStream \
     .format("kafka") \
@@ -22,6 +24,7 @@ raw_df = spark \
     .load() \
     .selectExpr("CAST(value AS STRING)")
 
+# Created Schema for Structured Streaming
 schema = StructType(
     [
         StructField("venue", StructType([
@@ -66,16 +69,23 @@ schema = StructType(
 )
 
 
-
+# Applied schema on data
 schema_df = raw_df.select(from_json(raw_df.value, schema).alias("data"))
+
+# Filterd data by country code(US)
 us_df = schema_df.filter(col("data.group.group_country") == 'us')
+
+# Selecting the group topic array and splitting into separate rows
 df = us_df.select(explode(col("data.group.group_topics.urlkey")).alias("topic"))
 
-sq = df.writeStream.outputMode("append").format('memory').queryName('this_query').start()
+# Creating Spark SQL Table In Memory(RAM)
+sql = df.writeStream.outputMode("append").format('memory').queryName('this_query').start()
+
+# Runing Spark SQL quries on the table
 output = spark.sql("select topic, count(*) as total_count from this_query group by topic order by total_count desc")
 
-output_df = (output.select(to_json(struct(col("*"))).alias("value"))
+# Converted the table records to json and changed table the name to "values"
+output_df = (output.select(to_json(struct(col("*"))).alias("value")))
 
+# Sending the data to kafka brocker
 output_df.write.format("kafka").option("kafka.bootstrap.servers", "localhost:9092").option("topic", "output").save()
-
-
