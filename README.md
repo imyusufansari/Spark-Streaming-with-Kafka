@@ -16,6 +16,14 @@ Getting this streaming data into Apache Spark-Streaming is the first step to per
 
 [Kafka Python API](https://github.com/dpkp/kafka-python) is used to interact with kafka cluster. PySpark is used to write the spark streaming jobs.
 
+# Features
+
+List of features ready and TODOs for future development
+
+1. What are the current active cities in India which are scheduling Meetup Events?
+2. What are the trending topics in US Meetup Events?
+3. How many Big data Meetup Events events scheduled in Mumbai?
+
 ## Execute the Application
 
 Assuming Kafka and Spark of appropriate version is installed, the following commands are used to run the application.
@@ -41,9 +49,14 @@ bin/kafka-server-start.sh config/server.properties
 ```
 bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.1 spark_meetup.py localhost:2181 meetup
 ```
-
 An analysis of number of RSVPs from various cities in "US" region is performed on the RSVPs Stream.
 
-//TODO
-* Visualize the data using Bokeh
-* Explore ElasticSearch and Kibana to Visualize
+# License
+This project uses the following license:
+
+# References
+
+* https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-8_2.11/2.0.1)
+* http://spark.apache.org/docs/latest/streaming-kafka-integration.html
+* https://stream.meetup.com/2/rsvps
+
