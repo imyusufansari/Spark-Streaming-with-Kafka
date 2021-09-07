@@ -52,7 +52,7 @@ bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.
 An analysis of number of RSVPs from various cities in "US" region is performed on the RSVPs Stream.
 
 # License
-This project uses the following license:
+This project uses the following license: Apache License 2.0
 
 # References
 
