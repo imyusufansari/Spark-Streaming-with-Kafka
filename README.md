@@ -19,10 +19,11 @@ Getting this streaming data into Apache Spark-Streaming is the first step to per
 # Features
 
 List of features ready and TODOs for future development
-
+```
 1. What are the current active cities in India which are scheduling Meetup Events?
 2. What are the trending topics in US Meetup Events?
 3. How many Big data Meetup Events events scheduled in Mumbai?
+```
 
 ## Execute the Application
 
