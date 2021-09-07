@@ -10,14 +10,14 @@ from pyspark.sql.types import *
 
 spark = SparkSession \
     .builder \
-    .appName("StructuredNetworkWordCount") \
+    .appName("Meetup") \
     .getOrCreate()
 
 raw_df = spark \
     .readStream \
     .format("kafka") \
     .option("kafka.bootstrap.servers", "localhost:9092") \
-    .option("subscribe", "sample") \
+    .option("subscribe", "meetup_topic") \
     .option("startingOffsets", "latest") \
     .load() \
     .selectExpr("CAST(value AS STRING)")
