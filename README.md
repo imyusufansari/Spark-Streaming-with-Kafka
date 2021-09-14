@@ -57,7 +57,7 @@ bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 spa
 6. Start <consumer>.ipynb file to visualize the data.
 
 # License
-This project uses the following license: <LICENSE>
+This project uses the following license: [Apache License 2.0](https://github.com/myusufuc/Spark-Streaming-with-Kafka/blob/f8f1af71e1e2346140cf447e8254ce7e2354026f/LICENSE)
 
 # References
 
