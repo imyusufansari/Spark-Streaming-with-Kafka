@@ -16,6 +16,7 @@ Getting this streaming data into Apache Spark-Streaming is the first step to per
 * ETL: Spark DataFrame, Spark Structured Streaming
 * Visualization: matplotlib 3.4.3
 * Git/GitHub 
+
 [Kafka Python API](https://github.com/dpkp/kafka-python) is used to interact with kafka cluster. PySpark is used to write the spark streaming jobs.
 
 # Features
@@ -48,7 +49,7 @@ Assuming Kafka and Spark of appropriate version is installed, the following comm
 4. Start Consumer notebook to consume the processed stream from the spark streaming.
 
 5. Submit the spark job <spark_file>.py, to read the data into Spark Streaming from Kafka.
-> Spark depends on a external package for kafka integeration [link](https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-8_2.11/2.0.1)
+> Spark depends on a external package for kafka integeration [link](https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-10_2.12/3.1.2)
 ```
 bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 spark_meetup.py localhost:2181 meetup
 ```
@@ -56,7 +57,7 @@ bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 spa
 6. Start <consumer>.ipynb file to visualize the data.
 
 # License
-This project uses the following license: LICENSE
+This project uses the following license: <LICENSE>
 
 # References
 
